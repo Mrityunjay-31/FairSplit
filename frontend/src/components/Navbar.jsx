@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import splitCreditLogo from '../assets/logo.png'
 
 const navLinks = [
   { label: 'Problem', href: '#problem' },
@@ -35,11 +36,7 @@ export default function Navbar() {
     >
       <div className="nav-inner">
         <a href="#" className="nav-logo">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="13" stroke="var(--accent)" strokeWidth="2" />
-            <path d="M9 14L13 18L19 10" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span>FairSplit</span>
+          <img src={splitCreditLogo} alt="SplitCredit" className="nav-logo-img" />
         </a>
 
         <div className="nav-links">
@@ -58,7 +55,7 @@ export default function Navbar() {
       <style>{`
         .navbar {
           position: fixed;
-          top: 0;
+          top: 32px;
           left: 0;
           right: 0;
           z-index: 100;
@@ -71,6 +68,7 @@ export default function Navbar() {
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid var(--border-subtle);
           padding: 0.7rem 2rem;
+          top: 0;
         }
         .nav-inner {
           max-width: 1280px;
@@ -88,6 +86,20 @@ export default function Navbar() {
           font-weight: 800;
           color: var(--text-primary);
           letter-spacing: -0.02em;
+          position: relative;
+          width: 250px;
+        }
+        .nav-logo-img {
+          position: absolute;
+          left: -140px;
+          top: 50%;
+          transform: translateY(-50%) scale(3.5) !important;
+          transform-origin: center center !important;
+          width: 280px !important;
+          max-width: none !important;
+          height: 60px !important;
+          object-fit: contain !important;
+          display: block !important;
         }
         .nav-links {
           display: flex;

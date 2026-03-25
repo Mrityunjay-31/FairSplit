@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+img {
+  max-width: none !important;
+}
+
 /* ─── Brand Tokens ─── */
 :root {
   --bg-primary: #050a18;
