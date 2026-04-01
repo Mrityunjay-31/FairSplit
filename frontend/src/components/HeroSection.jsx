@@ -520,7 +520,7 @@ export default function HeroSection() {
  
         .vault-perspective { perspective: 1000px; transform-style: preserve-3d; }
         .vault-card {
-          width: 340px;
+          width: 420px;
           background: linear-gradient(145deg, #0E1525 0%, #0A0F1E 60%, #06090F 100%);
           border: 1px solid rgba(201,151,74,0.2);
           border-radius: 16px;
@@ -557,26 +557,30 @@ export default function HeroSection() {
           margin-bottom: 1.4rem; position: relative; z-index: 1;
         }
         .vault-logo-mark {
-          width: 100px; height: 100px;
+          width: 60px; height: 30px;
           background: transparent; border-radius: 6px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
+          margin-right: 75px;
         }
         .vault-logo-img {
           width: 100%; height: 100%;
           object-fit: contain;
-          transform: scale(2.5);
+          transform: scale(2.8);
+          transform-origin: left center;
         }
         .vault-title {
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.7rem; color: rgba(232,230,225,0.5);
           letter-spacing: 0.08em; flex: 1; text-transform: uppercase;
+          line-height: 1.2;
         }
         .vault-status {
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.65rem; padding: 0.22rem 0.65rem;
           border-radius: 999px; font-weight: 600;
           letter-spacing: 0.05em; transition: all 0.4s ease;
+          flex-shrink: 0;
         }
         .vault-status.optimized {
           background: rgba(74,201,160,0.12);
@@ -697,11 +701,11 @@ export default function HeroSection() {
           .stats-row { justify-content: center; }
           .hero-right { margin-top: 2.5rem; }
           .tx-stack { display: none; }
-          .vault-card { width: 300px; }
+          .vault-card { width: 380px; }
         }
         @media (max-width: 520px) {
           .hero-headline { font-size: 3.5rem; }
-          .vault-card { width: 280px; }
+          .vault-card { width: 340px; }
           .stats-row { gap: 1.5rem; flex-wrap: wrap; }
         }
       `}</style>
