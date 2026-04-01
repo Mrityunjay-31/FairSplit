@@ -14,10 +14,10 @@ const monthlyData = [
 ]
 
 const categories = [
-  { label: 'Food & Dining', pct: 38, color: '#00e89d' },
-  { label: 'Travel', pct: 25, color: '#7c3aed' },
-  { label: 'Entertainment', pct: 20, color: '#3b82f6' },
-  { label: 'Shopping', pct: 17, color: '#f59e0b' },
+  { label: 'Food & Dining', pct: 38, color: '#C9974A' },
+  { label: 'Travel', pct: 25, color: '#4AC9A0' },
+  { label: 'Entertainment', pct: 20, color: '#4A8BC9' },
+  { label: 'Shopping', pct: 17, color: '#8892B0' },
 ]
 
 export default function SpendingInsightsSection() {
@@ -170,7 +170,7 @@ export default function SpendingInsightsSection() {
         .bar-fill {
           width: 100%;
           border-radius: 6px 6px 0 0;
-          background: linear-gradient(to top, #7c3aed, #00e89d);
+          background: linear-gradient(to top, var(--accent-secondary), var(--accent));
         }
         .bar-label {
           font-size: 0.7rem;

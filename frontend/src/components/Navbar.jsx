@@ -63,7 +63,7 @@ export default function Navbar() {
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-scrolled {
-          background: rgba(5, 10, 24, 0.85);
+          background: rgba(6, 8, 16, 0.85);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid var(--border-subtle);

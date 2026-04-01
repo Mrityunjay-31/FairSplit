@@ -161,10 +161,11 @@ export default function InteractiveDemoSection() {
           font-size: 0.9rem;
         }
         .debt-row-opt {
-          border-color: rgba(0,232,157,0.2);
-          background: rgba(0,232,157,0.04);
+          border-color: rgba(74,201,160,0.3);
+          background: rgba(74,201,160,0.06);
         }
         .debt-from {
+          font-family: var(--font-body);
           font-weight: 600;
           color: var(--accent-secondary);
           min-width: 50px;
@@ -177,8 +178,10 @@ export default function InteractiveDemoSection() {
           flex: 1;
         }
         .debt-amount {
-          font-weight: 700;
-          color: var(--accent);
+          font-family: var(--font-mono);
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: var(--text-primary);
         }
         .debt-total {
           font-size: 0.85rem;
@@ -186,16 +189,20 @@ export default function InteractiveDemoSection() {
           margin-top: 1rem;
         }
         .debt-total-opt {
-          color: var(--accent);
+          color: var(--accent-secondary);
         }
         .savings-badge {
           display: inline-block;
-          padding: 0.15rem 0.6rem;
-          background: rgba(0,232,157,0.15);
+          padding: 0.2rem 0.65rem;
+          background: rgba(74,201,160,0.15);
+          border: 1px solid rgba(74,201,160,0.3);
           border-radius: 999px;
-          font-size: 0.75rem;
+          font-size: 0.65rem;
+          font-family: var(--font-mono);
           font-weight: 600;
-          margin-left: 0.4rem;
+          letter-spacing: 0.05em;
+          margin-left: 0.5rem;
+          color: var(--accent-secondary);
         }
         .demo-buttons {
           margin-top: 1.5rem;

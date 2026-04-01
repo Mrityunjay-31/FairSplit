@@ -59,7 +59,7 @@ export default function NetworkGraph({
     const nodeGroup = new THREE.Group()
 
     nodes.forEach((n) => {
-      const mat = new THREE.MeshBasicMaterial({ color: 0x00e89d })
+      const mat = new THREE.MeshBasicMaterial({ color: 0x4AC9A0 })
       const mesh = new THREE.Mesh(sphereGeo, mat)
       mesh.position.copy(nodePositions[n.id])
       nodeGroup.add(mesh)
@@ -67,7 +67,7 @@ export default function NetworkGraph({
       // Glow
       const glowGeo = new THREE.SphereGeometry(0.3, 16, 16)
       const glowMat = new THREE.MeshBasicMaterial({
-        color: 0x00e89d,
+        color: 0x4AC9A0,
         transparent: true,
         opacity: 0.12,
       })
@@ -83,7 +83,7 @@ export default function NetworkGraph({
       canvas2d.width = 128
       canvas2d.height = 48
       const ctx2d = canvas2d.getContext('2d')
-      ctx2d.font = '600 22px Inter, sans-serif'
+      ctx2d.font = '600 22px "JetBrains Mono", monospace'
       ctx2d.textAlign = 'center'
       ctx2d.fillStyle = '#f0f4ff'
       ctx2d.fillText(n.label, 64, 30)
@@ -141,7 +141,7 @@ export default function NetworkGraph({
       const points = [from, to]
       const geo = new THREE.BufferGeometry().setFromPoints(points)
       const mat = new THREE.LineBasicMaterial({
-        color: optimized ? 0x00e89d : 0x7c3aed,
+        color: optimized ? 0x4AC9A0 : 0xC9974A,
         transparent: true,
         opacity: optimized ? 0.8 : 0.35,
         linewidth: 1,

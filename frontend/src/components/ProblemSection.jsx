@@ -105,7 +105,7 @@ export default function ProblemSection() {
               {[
                 [40, 40], [200, 30], [120, 100], [50, 170], [210, 160], [130, 50]
               ].map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r="14" fill="#7c3aed" opacity="0.7" />
+                <circle key={i} cx={cx} cy={cy} r="14" fill="var(--text-secondary)" opacity="0.4" />
               ))}
               {[
                 [40,40,200,30], [40,40,120,100], [200,30,120,100],
@@ -113,7 +113,7 @@ export default function ProblemSection() {
                 [40,40,50,170], [200,30,210,160], [130,50,50,170],
                 [130,50,210,160], [40,40,210,160],
               ].map(([x1,y1,x2,y2], i) => (
-                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#ef4444" strokeWidth="1.5" opacity="0.5" />
+                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent-danger)" strokeWidth="1.5" opacity="0.6" />
               ))}
             </svg>
           </div>
@@ -130,12 +130,12 @@ export default function ProblemSection() {
               {[
                 [40, 40], [200, 30], [120, 100], [50, 170], [210, 160], [130, 50]
               ].map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r="14" fill="#00e89d" opacity="0.8" />
+                <circle key={i} cx={cx} cy={cy} r="14" fill="var(--accent-secondary)" opacity="0.8" />
               ))}
               {[
                 [40,40,120,100], [120,100,210,160], [130,50,50,170],
               ].map(([x1,y1,x2,y2], i) => (
-                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#00e89d" strokeWidth="2.5" opacity="0.7" />
+                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent-secondary)" strokeWidth="2.5" opacity="0.7" />
               ))}
             </svg>
           </div>
@@ -163,7 +163,7 @@ export default function ProblemSection() {
         }
         .problem-card:hover {
           transform: translateY(-4px);
-          box-shadow: var(--glow-purple);
+          box-shadow: var(--glow-accent);
         }
         .problem-icon {
           font-size: 2rem;
@@ -206,12 +206,12 @@ export default function ProblemSection() {
           display: inline-block;
         }
         .comparison-label-bad {
-          background: rgba(239, 68, 68, 0.1);
-          color: #ef4444;
+          background: rgba(201, 74, 110, 0.15);
+          color: var(--accent-danger);
         }
         .comparison-label-good {
-          background: rgba(0, 232, 157, 0.1);
-          color: var(--accent);
+          background: rgba(74, 201, 160, 0.1);
+          color: var(--accent-secondary);
         }
         .comparison-arrow {
           flex-shrink: 0;

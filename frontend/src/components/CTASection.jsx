@@ -4,7 +4,7 @@ import ParticleBackground from './ParticleBackground'
 export default function CTASection() {
   return (
     <section id="cta" className="section cta-section">
-      <ParticleBackground count={50} color="#7c3aed" opacity={0.25} />
+      <ParticleBackground count={50} color="#C9974A" opacity={0.25} />
 
       <div className="section-container cta-content">
         <motion.div
@@ -64,10 +64,11 @@ export default function CTASection() {
           margin: 0 auto;
         }
         .cta-title {
-          font-size: clamp(2rem, 5vw, 3.5rem);
-          font-weight: 900;
-          line-height: 1.1;
-          letter-spacing: -0.03em;
+          font-family: var(--font-heading);
+          font-size: clamp(3.5rem, 6vw, 5rem);
+          font-weight: 400;
+          line-height: 0.95;
+          letter-spacing: 0.01em;
           margin-bottom: 1.25rem;
         }
         .cta-subtitle {

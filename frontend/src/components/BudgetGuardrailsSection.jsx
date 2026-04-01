@@ -55,7 +55,7 @@ export default function BudgetGuardrailsSection() {
               <path
                 d="M 20 110 A 80 80 0 0 1 180 110"
                 fill="none"
-                stroke="rgba(148,163,184,0.1)"
+                stroke="rgba(232,230,225,0.07)"
                 strokeWidth="14"
                 strokeLinecap="round"
               />
@@ -63,7 +63,7 @@ export default function BudgetGuardrailsSection() {
               <path
                 d="M 20 110 A 80 80 0 0 1 100 30"
                 fill="none"
-                stroke="#00e89d"
+                stroke="#4AC9A0"
                 strokeWidth="14"
                 strokeLinecap="round"
                 opacity="0.3"
@@ -72,7 +72,7 @@ export default function BudgetGuardrailsSection() {
               <path
                 d="M 100 30 A 80 80 0 0 1 155 55"
                 fill="none"
-                stroke="#f59e0b"
+                stroke="#C9974A"
                 strokeWidth="14"
                 strokeLinecap="round"
                 opacity="0.3"
@@ -81,7 +81,7 @@ export default function BudgetGuardrailsSection() {
               <path
                 d="M 155 55 A 80 80 0 0 1 180 110"
                 fill="none"
-                stroke="#ef4444"
+                stroke="#C94A6E"
                 strokeWidth="14"
                 strokeLinecap="round"
                 opacity="0.3"
@@ -134,15 +134,15 @@ export default function BudgetGuardrailsSection() {
           </p>
           <div className="guardrails-features">
             <div className="guardrail-feat">
-              <span className="feat-dot" style={{ background: '#00e89d' }} />
+              <span className="feat-dot" style={{ background: '#4AC9A0' }} />
               Category-level budgets
             </div>
             <div className="guardrail-feat">
-              <span className="feat-dot" style={{ background: '#7c3aed' }} />
+              <span className="feat-dot" style={{ background: '#C9974A' }} />
               Real-time spending alerts
             </div>
             <div className="guardrail-feat">
-              <span className="feat-dot" style={{ background: '#3b82f6' }} />
+              <span className="feat-dot" style={{ background: '#4A8BC9' }} />
               Weekly spending summaries
             </div>
           </div>
@@ -182,8 +182,8 @@ export default function BudgetGuardrailsSection() {
           align-items: flex-start;
           gap: 0.75rem;
           padding: 1rem 1.5rem;
-          background: rgba(245, 158, 11, 0.08);
-          border: 1px solid rgba(245, 158, 11, 0.2);
+          background: rgba(201, 74, 110, 0.08);
+          border: 1px solid rgba(201, 74, 110, 0.2);
           border-radius: 14px;
           max-width: 360px;
         }
@@ -192,7 +192,7 @@ export default function BudgetGuardrailsSection() {
           font-size: 0.9rem;
           display: block;
           margin-bottom: 0.2rem;
-          color: #f59e0b;
+          color: var(--accent-danger);
         }
         .budget-toast p {
           font-size: 0.825rem;

@@ -31,8 +31,8 @@ const optEdges = [
 
 export default function SmartSettlementSection() {
   const sectionRef = useRef(null)
+  const counterRef = useRef(null)
   const [optimized, setOptimized] = useState(false)
-  const [count, setCount] = useState(12)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,13 +61,17 @@ export default function SmartSettlementSection() {
             duration: 1.5,
             ease: 'power2.out',
             onUpdate: function () {
-              setCount(Math.round(this.targets()[0].val))
+              if (counterRef.current) {
+                counterRef.current.innerText = Math.round(this.targets()[0].val)
+              }
             },
           })
         },
         onLeaveBack: () => {
           setOptimized(false)
-          setCount(12)
+          if (counterRef.current) {
+            counterRef.current.innerText = 12
+          }
         },
       })
     }, sectionRef)
@@ -90,7 +94,7 @@ export default function SmartSettlementSection() {
 
           <div className="settlement-counter">
             <div className="counter-box">
-              <span className="counter-value">{count}</span>
+              <span className="counter-value" ref={counterRef}>12</span>
               <span className="counter-label">Transactions</span>
             </div>
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="counter-arrow">
@@ -137,18 +141,23 @@ export default function SmartSettlementSection() {
           min-width: 120px;
         }
         .counter-box-accent {
-          border-color: rgba(0, 232, 157, 0.3);
-          box-shadow: var(--glow-accent);
+          border-color: rgba(74, 201, 160, 0.3);
+          box-shadow: var(--glow-secondary);
         }
         .counter-value {
           display: block;
-          font-size: 2.5rem;
-          font-weight: 800;
+          font-family: var(--font-heading);
+          font-size: 3.5rem;
+          font-weight: 400;
           color: var(--accent);
           line-height: 1;
         }
+        .counter-box-accent .counter-value {
+          color: var(--accent-secondary);
+        }
         .counter-label {
           display: block;
+          font-family: var(--font-mono);
           font-size: 0.8rem;
           color: var(--text-secondary);
           margin-top: 0.4rem;

@@ -11,8 +11,8 @@ const steps = [
     desc: 'Invite friends, roommates, or travel buddies to a shared group in seconds.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="rgba(0,232,157,0.1)" />
-        <path d="M20 14V26M14 20H26" stroke="#00e89d" strokeWidth="2.5" strokeLinecap="round" />
+        <rect width="40" height="40" rx="12" fill="rgba(201,151,74,0.1)" />
+        <path d="M20 14V26M14 20H26" stroke="#C9974A" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -22,9 +22,9 @@ const steps = [
     desc: 'Log shared bills — dinners, rent, trips. FairSplit handles the math.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="rgba(124,58,237,0.1)" />
-        <path d="M14 26L20 14L26 26" stroke="#7c3aed" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M16 22H24" stroke="#7c3aed" strokeWidth="2.5" strokeLinecap="round" />
+        <rect width="40" height="40" rx="12" fill="rgba(74,201,160,0.1)" />
+        <path d="M14 26L20 14L26 26" stroke="#4AC9A0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 22H24" stroke="#4AC9A0" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -34,8 +34,8 @@ const steps = [
     desc: 'The algorithm minimizes transactions. Pay once, settle everything.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="rgba(59,130,246,0.1)" />
-        <path d="M14 20L18 24L26 16" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect width="40" height="40" rx="12" fill="rgba(74,139,201,0.1)" />
+        <path d="M14 20L18 24L26 16" stroke="#4A8BC9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -131,11 +131,10 @@ export default function HowItWorksSection() {
           box-shadow: var(--glow-accent);
         }
         .step-num {
-          font-size: 0.75rem;
-          font-weight: 700;
+          font-family: var(--font-heading);
+          font-size: 1.6rem;
           color: var(--accent);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
+          letter-spacing: 0.05em;
           display: block;
           margin-bottom: 1rem;
         }

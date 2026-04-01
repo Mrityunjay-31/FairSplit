@@ -314,18 +314,17 @@ export default function HeroSection() {
         </div>
       </motion.div>
  
+ 
       {/* Bottom fade */}
       <div className="hero-floor-fade" />
- 
+
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=JetBrains+Mono:wght@400;600&display=swap');
- 
         .hero-root {
           position: relative;
           min-height: 100vh;
-          background: #060810;
-          color: #E8E6E1;
-          font-family: 'DM Sans', sans-serif;
+          background: var(--bg-primary);
+          color: var(--text-primary);
+          font-family: var(--font-body);
           overflow: hidden;
           display: flex;
           flex-direction: column;
@@ -430,7 +429,7 @@ export default function HeroSection() {
         }
  
         .hero-headline {
-          font-family: 'Bebas Neue', sans-serif;
+          font-family: var(--font-heading);
           font-size: clamp(4rem, 7.5vw, 7rem);
           line-height: 0.95;
           letter-spacing: 0.01em;
@@ -460,7 +459,7 @@ export default function HeroSection() {
           border: none;
           padding: 0.85rem 1.8rem;
           border-radius: 4px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-body);
           font-size: 0.9rem;
           font-weight: 500;
           cursor: pointer;
@@ -477,7 +476,7 @@ export default function HeroSection() {
           border: 1px solid rgba(232,230,225,0.15);
           padding: 0.85rem 1.6rem;
           border-radius: 4px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-body);
           font-size: 0.9rem;
           cursor: pointer;
           transition: all 0.2s ease;
@@ -496,7 +495,7 @@ export default function HeroSection() {
         }
         .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
         .stat-number {
-          font-family: 'Bebas Neue', sans-serif;
+          font-family: var(--font-heading);
           font-size: 2.2rem;
           color: #C9974A;
           letter-spacing: 0.02em;
@@ -610,7 +609,7 @@ export default function HeroSection() {
           gap: 0.5rem; margin-bottom: 0.8rem;
         }
         .metric-value {
-          font-family: 'Bebas Neue', sans-serif;
+          font-family: var(--font-heading);
           font-size: 3.2rem; line-height: 1; transition: color 0.4s ease;
         }
         .metric-sub { font-size: 0.75rem; color: rgba(232,230,225,0.3); font-weight: 300; }
@@ -688,14 +687,14 @@ export default function HeroSection() {
         .tx-label { font-size: 0.75rem; color: rgba(232,230,225,0.85); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .tx-route { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: rgba(232,230,225,0.3); white-space: nowrap; }
         .tx-amount { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600; flex-shrink: 0; }
- 
+
         .hero-floor-fade {
           position: absolute; bottom: 0; left: 0; right: 0;
           height: 160px;
-          background: linear-gradient(to bottom, transparent, #060810);
+          background: linear-gradient(to bottom, transparent, var(--bg-primary));
           z-index: 4; pointer-events: none;
         }
- 
+
         @media (max-width: 1024px) {
           .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 7rem 1.5rem 4rem; }
           .hero-body { margin-left: auto; margin-right: auto; }
