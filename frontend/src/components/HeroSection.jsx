@@ -103,7 +103,7 @@ function VaultVisual({ scrollY }) {
           <div className="vault-logo-mark">
             <img src={splitCreditLogo} alt="SplitCredit" className="vault-logo-img" />
           </div>
-          <span className="vault-title">Settlement Engine</span>
+          <span className="vault-title">Settlement<br/>Engine</span>
           <div className={`vault-status ${optimized ? 'optimized' : 'raw'}`}>
             {optimized ? '✓ Optimized' : '● Processing'}
           </div>
@@ -520,11 +520,11 @@ export default function HeroSection() {
  
         .vault-perspective { perspective: 1000px; transform-style: preserve-3d; }
         .vault-card {
-          width: 420px;
+          width: 340px;
           background: linear-gradient(145deg, #0E1525 0%, #0A0F1E 60%, #06090F 100%);
           border: 1px solid rgba(201,151,74,0.2);
           border-radius: 16px;
-          padding: 1.5rem;
+          padding: 1.25rem 1.0rem;
           transform-style: preserve-3d;
           box-shadow:
             0 40px 80px rgba(0,0,0,0.6),
@@ -553,27 +553,29 @@ export default function HeroSection() {
         }
  
         .vault-header {
-          display: flex; align-items: center; gap: 0.75rem;
+          display: flex; align-items: center; gap: 0.25rem;
           margin-bottom: 1.4rem; position: relative; z-index: 1;
         }
         .vault-logo-mark {
-          width: 60px; height: 30px;
+          width: 70px; height: 40px;
           background: transparent; border-radius: 6px;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          margin-right: 75px;
+          margin-right: 120px;
+          margin-left: -60px;
         }
         .vault-logo-img {
           width: 100%; height: 100%;
           object-fit: contain;
-          transform: scale(2.8);
+          transform: scale(3.5);
           transform-origin: left center;
         }
         .vault-title {
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.7rem; color: rgba(232,230,225,0.5);
-          letter-spacing: 0.08em; flex: 1; text-transform: uppercase;
+          font-size: 0.6rem; color: rgba(232,230,225,0.5);
+          letter-spacing: 0.04em; flex: 1; text-transform: uppercase;
           line-height: 1.2;
+          text-align: center;
         }
         .vault-status {
           font-family: 'JetBrains Mono', monospace;
@@ -701,11 +703,11 @@ export default function HeroSection() {
           .stats-row { justify-content: center; }
           .hero-right { margin-top: 2.5rem; }
           .tx-stack { display: none; }
-          .vault-card { width: 380px; }
+          .vault-card { width: 320px; }
         }
         @media (max-width: 520px) {
           .hero-headline { font-size: 3.5rem; }
-          .vault-card { width: 340px; }
+          .vault-card { width: 300px; }
           .stats-row { gap: 1.5rem; flex-wrap: wrap; }
         }
       `}</style>
