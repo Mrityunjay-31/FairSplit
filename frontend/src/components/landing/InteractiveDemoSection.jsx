@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import NetworkGraph from './NetworkGraph'
+import NetworkGraph from '../shared/NetworkGraph'
 
 const initialDebts = [
   { from: 'Alice', to: 'Bob', amount: 200 },

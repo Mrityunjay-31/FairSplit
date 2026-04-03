@@ -1,68 +1,68 @@
-import { useEffect } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Lenis from 'lenis'
+import { lazy, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 
-import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import ProblemSection from './components/ProblemSection'
-import SmartSettlementSection from './components/SmartSettlementSection'
-import TrustScoreSection from './components/TrustScoreSection'
-import SpendingInsightsSection from './components/SpendingInsightsSection'
-import BudgetGuardrailsSection from './components/BudgetGuardrailsSection'
-import HowItWorksSection from './components/HowItWorksSection'
-import InteractiveDemoSection from './components/InteractiveDemoSection'
-import CTASection from './components/CTASection'
+import LandingLayout from './layouts/LandingLayout'
+import AppLayout from './layouts/AppLayout'
 
-gsap.registerPlugin(ScrollTrigger)
+/* ── Lazy-loaded pages ── */
+const LandingPage     = lazy(() => import('./pages/LandingPage'))
+const DashboardPage   = lazy(() => import('./pages/DashboardPage'))
+const GroupDetailPage  = lazy(() => import('./pages/GroupDetailPage'))
+const AddExpensePage   = lazy(() => import('./pages/AddExpensePage'))
+const SettlementsPage  = lazy(() => import('./pages/SettlementsPage'))
+const ProfilePage     = lazy(() => import('./pages/ProfilePage'))
+const InsightsPage    = lazy(() => import('./pages/InsightsPage'))
+
+/* ── Loading fallback ── */
+function PageLoader() {
+  return (
+    <div className="page-loader">
+      <div className="loader-spinner" />
+      <style>{`
+        .page-loader {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 60vh;
+        }
+        .loader-spinner {
+          width: 36px;
+          height: 36px;
+          border: 3px solid rgba(232, 230, 225, 0.08);
+          border-top-color: var(--accent);
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  )
+}
 
 export default function App() {
-  useEffect(() => {
-    // Lenis Smooth Scroll Configuration
-    const lenis = new Lenis({
-      lerp: 0.08,
-      wheelMultiplier: 1.0,
-      smoothWheel: true,
-    })
-
-    lenis.on('scroll', ScrollTrigger.update)
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
-    gsap.ticker.lagSmoothing(0)
-
-    // Ensure ScrollTrigger refreshes when DOM layout shifts (e.g. images loading)
-    const resizeObserver = new ResizeObserver(() => ScrollTrigger.refresh())
-    resizeObserver.observe(document.body)
-    
-    return () => {
-      resizeObserver.disconnect()
-      lenis.destroy()
-    }
-  }, [])
-
   return (
-    <>
-      <Navbar />
-      <main>
-        <HeroSection />
-        <div className="global-bg-wrapper">
-          <div className="global-bg-fixed">
-            <div className="global-grid" />
-            <div className="global-radial" />
-            <div className="global-radial-2" />
-          </div>
-          <ProblemSection />
-          <SmartSettlementSection />
-          <TrustScoreSection />
-          <SpendingInsightsSection />
-          <BudgetGuardrailsSection />
-          <HowItWorksSection />
-          <InteractiveDemoSection />
-          <CTASection />
-        </div>
-      </main>
-    </>
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {/* ── Marketing / Landing ── */}
+          <Route element={<LandingLayout />}>
+            <Route path="/" element={<LandingPage />} />
+          </Route>
+
+          {/* ── App Pages ── */}
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/group/:id" element={<GroupDetailPage />} />
+            <Route path="/expense/add" element={<AddExpensePage />} />
+            <Route path="/settlements" element={<SettlementsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/insights" element={<InsightsPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
   )
 }

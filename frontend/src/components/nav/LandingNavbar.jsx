@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import splitCreditLogo from '../assets/logo.png'
+import { Link } from 'react-router-dom'
+import splitCreditLogo from '../../assets/logo.png'
 
 const navLinks = [
   { label: 'Problem', href: '#problem' },
@@ -9,7 +10,7 @@ const navLinks = [
   { label: 'Demo', href: '#demo' },
 ]
 
-export default function Navbar() {
+export default function LandingNavbar() {
   const navRef = useRef(null)
 
   useEffect(() => {
@@ -35,9 +36,9 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="nav-inner">
-        <a href="#" className="nav-logo">
+        <Link to="/" className="nav-logo">
           <img src={splitCreditLogo} alt="SplitCredit" className="nav-logo-img" />
-        </a>
+        </Link>
 
         <div className="nav-links">
           {navLinks.map((link) => (
@@ -47,9 +48,9 @@ export default function Navbar() {
           ))}
         </div>
 
-        <a href="#cta" className="btn-primary nav-cta">
+        <Link to="/dashboard" className="btn-primary nav-cta">
           Get Started
-        </a>
+        </Link>
       </div>
 
       <style>{`

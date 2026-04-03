@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=JetBrains+Mono:wght@400;600&display=swap');
+
 
 img {
   max-width: none !important;
@@ -17,11 +17,11 @@ img {
   --accent-warn: #C9974A;
   --accent-danger: #C94A6E;
   --text-primary: #E8E6E1;
-  --text-secondary: rgba(232,230,225,0.7);
-  --border-subtle: rgba(232,230,225,0.08);
-  --glow-accent: 0 0 40px rgba(201,151,74,0.15);
-  --glow-secondary: 0 0 40px rgba(74,201,160,0.15);
-  
+  --text-secondary: rgba(232, 230, 225, 0.7);
+  --border-subtle: rgba(232, 230, 225, 0.08);
+  --glow-accent: 0 0 40px rgba(201, 151, 74, 0.15);
+  --glow-secondary: 0 0 40px rgba(74, 201, 160, 0.15);
+
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -29,7 +29,13 @@ img {
 }
 
 /* ─── Global Reset ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
@@ -46,13 +52,22 @@ body {
 }
 
 ::selection {
-  background: rgba(201,151,74,0.3);
+  background: rgba(201, 151, 74, 0.3);
   color: #fff;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: rgba(232,230,225,0.15); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 230, 225, 0.15);
+  border-radius: 3px;
+}
 
 /* ─── Utility Classes ─── */
 .section-container {
@@ -76,7 +91,7 @@ body {
 }
 
 .glow-border {
-  border: 1px solid rgba(201,151,74,0.2);
+  border: 1px solid rgba(201, 151, 74, 0.2);
   box-shadow: var(--glow-accent);
 }
 
@@ -96,10 +111,11 @@ body {
   transition: all 0.2s ease;
   font-family: var(--font-body);
 }
+
 .btn-primary:hover {
   background: #E0AA5A;
   transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(201,151,74,0.35);
+  box-shadow: 0 8px 32px rgba(201, 151, 74, 0.35);
 }
 
 .btn-secondary {
@@ -108,19 +124,20 @@ body {
   gap: 0.6rem;
   padding: 0.85rem 1.6rem;
   background: transparent;
-  color: rgba(232,230,225,0.7);
+  color: rgba(232, 230, 225, 0.7);
   font-weight: 400;
   font-size: 0.9rem;
-  border: 1px solid rgba(232,230,225,0.15);
+  border: 1px solid rgba(232, 230, 225, 0.15);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: var(--font-body);
 }
+
 .btn-secondary:hover {
-  border-color: rgba(201,151,74,0.5);
+  border-color: rgba(201, 151, 74, 0.5);
   color: var(--accent);
-  background: rgba(201,151,74,0.04);
+  background: rgba(201, 151, 74, 0.04);
 }
 
 /* ─── Section Base ─── */
@@ -137,20 +154,22 @@ body {
   padding: 0;
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  color: rgba(201,151,74,0.8);
+  color: rgba(201, 151, 74, 0.8);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: transparent;
   border: none;
   margin-bottom: 1.4rem;
 }
+
 .section-label::before {
   content: '';
   display: inline-block;
-  width: 6px; height: 6px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 8px rgba(201,151,74,0.8);
+  box-shadow: 0 0 8px rgba(201, 151, 74, 0.8);
 }
 
 .section-title {
@@ -192,22 +211,26 @@ body {
   position: absolute;
   inset: -20%;
   background-image:
-    linear-gradient(rgba(201,151,74,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,151,74,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(201, 151, 74, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 151, 74, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   transform-origin: center;
 }
 
 .global-radial {
   position: absolute;
-  top: -20%; left: -10%;
-  width: 70%; height: 80%;
-  background: radial-gradient(ellipse, rgba(201,151,74,0.05) 0%, transparent 65%);
+  top: -20%;
+  left: -10%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(201, 151, 74, 0.05) 0%, transparent 65%);
 }
 
 .global-radial-2 {
   position: absolute;
-  bottom: -10%; right: -5%;
-  width: 55%; height: 70%;
-  background: radial-gradient(ellipse, rgba(74,139,201,0.05) 0%, transparent 65%);
+  bottom: -10%;
+  right: -5%;
+  width: 55%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(74, 139, 201, 0.05) 0%, transparent 65%);
 }

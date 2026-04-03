@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
-import splitCreditLogo from '../assets/logo.png'
+import splitCreditLogo from '../../assets/logo.png'
  
 /* ─────────────────────────────────────────────
    DATA

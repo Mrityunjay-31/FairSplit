@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import ParticleBackground from './ParticleBackground'
+import ParticleBackground from '../shared/ParticleBackground'
+import Footer from '../shared/Footer'
 
 export default function CTASection() {
   return (
@@ -19,7 +20,7 @@ export default function CTASection() {
             Start splitting smarter <span className="gradient-text">today</span>
           </h2>
           <p className="cta-subtitle">
-            Join thousands of groups who've simplified their shared finances with FairSplit.
+            Join thousands of groups who've simplified their shared finances with SplitCredit.
           </p>
           <div className="cta-buttons">
             <button className="btn-primary">
@@ -36,19 +37,7 @@ export default function CTASection() {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="section-container footer-inner">
-          <p className="footer-brand">
-            <svg width="20" height="20" viewBox="0 0 28 28" fill="none" style={{ verticalAlign: 'middle', marginRight: '0.4rem' }}>
-              <circle cx="14" cy="14" r="13" stroke="var(--accent)" strokeWidth="2" />
-              <path d="M9 14L13 18L19 10" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            FairSplit
-          </p>
-          <p className="footer-copy">© 2026 FairSplit. Split smarter, settle faster.</p>
-        </div>
-      </footer>
+      <Footer />
 
       <style>{`
         .cta-section {
@@ -82,27 +71,7 @@ export default function CTASection() {
           gap: 1rem;
           justify-content: center;
           flex-wrap: wrap;
-        }
-        .footer {
-          margin-top: 6rem;
-          padding: 2rem 0;
-          border-top: 1px solid var(--border-subtle);
-        }
-        .footer-inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .footer-brand {
-          font-weight: 700;
-          font-size: 1rem;
-        }
-        .footer-copy {
-          font-size: 0.8rem;
-          color: var(--text-secondary);
-        }
-        @media (max-width: 600px) {
-          .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+          margin-bottom: 4rem;
         }
       `}</style>
     </section>
