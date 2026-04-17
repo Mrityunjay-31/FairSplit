@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { GroupProvider } from './context/GroupContext'
 
 import LandingLayout from './layouts/LandingLayout'
 import AppLayout from './layouts/AppLayout'
@@ -9,7 +10,7 @@ import AppLayout from './layouts/AppLayout'
 const LandingPage     = lazy(() => import('./pages/LandingPage'))
 const DashboardPage   = lazy(() => import('./pages/DashboardPage'))
 const GroupDetailPage  = lazy(() => import('./pages/GroupDetailPage'))
-const AddExpensePage   = lazy(() => import('./pages/AddExpensePage'))
+const CreateGroupPage  = lazy(() => import('./pages/CreateGroupPage'))
 const SettlementsPage  = lazy(() => import('./pages/SettlementsPage'))
 const ProfilePage     = lazy(() => import('./pages/ProfilePage'))
 const InsightsPage    = lazy(() => import('./pages/InsightsPage'))
@@ -44,25 +45,27 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <AnimatePresence mode="wait">
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          {/* ── Marketing / Landing ── */}
-          <Route element={<LandingLayout />}>
-            <Route path="/" element={<LandingPage />} />
-          </Route>
+    <GroupProvider>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {/* ── Marketing / Landing ── */}
+            <Route element={<LandingLayout />}>
+              <Route path="/" element={<LandingPage />} />
+            </Route>
 
-          {/* ── App Pages ── */}
-          <Route element={<AppLayout />}>
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/group/:id" element={<GroupDetailPage />} />
-            <Route path="/expense/add" element={<AddExpensePage />} />
-            <Route path="/settlements" element={<SettlementsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/insights" element={<InsightsPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </AnimatePresence>
+            {/* ── App Pages ── */}
+            <Route element={<AppLayout />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/group/create" element={<CreateGroupPage />} />
+              <Route path="/group/:id" element={<GroupDetailPage />} />
+              <Route path="/settlements" element={<SettlementsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/insights" element={<InsightsPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </AnimatePresence>
+    </GroupProvider>
   )
 }

@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import PageTransition from '../components/shared/PageTransition'
+import { useGroups, calculateDebts, getContributions } from '../context/GroupContext'
 
-const groups = [
-  { id: 'goa-trip', name: 'Goa Trip 2026', members: 5, balance: '₹3,420', color: '#C9974A' },
-  { id: 'roommates', name: 'Roommates', members: 3, balance: '₹1,280', color: '#4AC9A0' },
-  { id: 'office-lunch', name: 'Office Lunches', members: 8, balance: '₹890', color: '#4A8BC9' },
-  { id: 'birthday-bash', name: 'Birthday Party', members: 6, balance: '₹5,100', color: '#C94A6E' },
-]
+const COLORS = ['#C9974A', '#4AC9A0', '#4A8BC9', '#C94A6E', '#9B59B6', '#E67E22', '#1ABC9C', '#E74C3C']
 
 const recentActivity = [
   { text: 'Priya added ₹1,200 for "Dinner"', time: '2 hours ago', icon: '🍽️' },
@@ -27,6 +23,19 @@ const fadeUp = {
 }
 
 export default function DashboardPage() {
+  const { groups } = useGroups()
+
+  // Compute stats
+  const activeGroups = groups.length
+  const totalOwed = groups.reduce((acc, g) => {
+    const debts = calculateDebts(g)
+    return acc + debts.reduce((a, d) => a + d.amount, 0)
+  }, 0)
+  const totalSpentAll = groups.reduce(
+    (acc, g) => acc + g.expenses.reduce((a, e) => a + e.amount, 0),
+    0
+  )
+
   return (
     <PageTransition>
       <div className="dash">
@@ -36,16 +45,16 @@ export default function DashboardPage() {
             <h1 className="dash-title">Dashboard</h1>
             <p className="dash-subtitle">Welcome back! Here's your financial overview.</p>
           </div>
-          <Link to="/expense/add" className="btn-primary">+ Add Expense</Link>
+          <Link to="/group/create" className="btn-primary">+ Add Group</Link>
         </div>
 
         {/* Summary cards */}
         <motion.div className="dash-stats" variants={stagger} initial="hidden" animate="visible">
           {[
-            { label: 'Total Owed to You', value: '₹4,830', color: '#4AC9A0' },
-            { label: 'You Owe', value: '₹1,760', color: '#C94A6E' },
-            { label: 'Active Groups', value: '4', color: '#4A8BC9' },
-            { label: 'Trust Score', value: '92', color: '#C9974A' },
+            { label: 'Total Spent', value: `₹${totalSpentAll.toLocaleString('en-IN')}`, color: '#4AC9A0' },
+            { label: 'Unsettled Debts', value: `₹${totalOwed.toLocaleString('en-IN')}`, color: '#C94A6E' },
+            { label: 'Active Groups', value: `${activeGroups}`, color: '#4A8BC9' },
+            { label: 'Members Total', value: `${groups.reduce((a, g) => a + g.members.length, 0)}`, color: '#C9974A' },
           ].map((s) => (
             <motion.div key={s.label} className="dash-stat-card glass" variants={fadeUp}>
               <span className="dash-stat-label">{s.label}</span>
@@ -60,22 +69,37 @@ export default function DashboardPage() {
           <motion.div className="dash-section" variants={stagger} initial="hidden" animate="visible">
             <div className="dash-section-header">
               <h2>Your Groups</h2>
-              <Link to="/dashboard" className="dash-view-all">View all →</Link>
             </div>
-            {groups.map((g) => (
-              <motion.div key={g.id} variants={fadeUp}>
-                <Link to={`/group/${g.id}`} className="group-card glass">
-                  <div className="group-icon" style={{ background: `${g.color}18`, border: `1px solid ${g.color}33` }}>
-                    <span style={{ color: g.color, fontWeight: 700 }}>{g.name[0]}</span>
-                  </div>
-                  <div className="group-info">
-                    <span className="group-name">{g.name}</span>
-                    <span className="group-meta">{g.members} members</span>
-                  </div>
-                  <span className="group-balance" style={{ color: g.color }}>{g.balance}</span>
+            {groups.length === 0 ? (
+              <div className="dash-empty glass">
+                <span style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>👥</span>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>No groups yet</p>
+                <Link to="/group/create" className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.6rem 1.2rem' }}>
+                  + Create Your First Group
                 </Link>
-              </motion.div>
-            ))}
+              </div>
+            ) : (
+              groups.map((g, i) => {
+                const totalSpent = g.expenses.reduce((a, e) => a + e.amount, 0)
+                const color = COLORS[i % COLORS.length]
+                return (
+                  <motion.div key={g.id} variants={fadeUp}>
+                    <Link to={`/group/${g.id}`} className="group-card glass">
+                      <div className="group-icon" style={{ background: `${color}18`, border: `1px solid ${color}33` }}>
+                        <span style={{ color, fontWeight: 700 }}>{g.name[0]}</span>
+                      </div>
+                      <div className="group-info">
+                        <span className="group-name">{g.name}</span>
+                        <span className="group-meta">{g.members.length} members · {g.expenses.length} expenses</span>
+                      </div>
+                      <span className="group-balance" style={{ color }}>
+                        ₹{totalSpent.toLocaleString('en-IN')}
+                      </span>
+                    </Link>
+                  </motion.div>
+                )
+              })
+            )}
           </motion.div>
 
           {/* Recent Activity */}
@@ -154,13 +178,15 @@ export default function DashboardPage() {
           font-size: 1.15rem;
           font-weight: 700;
         }
-        .dash-view-all {
-          font-size: 0.82rem;
-          color: var(--accent);
-          text-decoration: none;
-          transition: opacity 0.2s;
+        .dash-empty {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 2.5rem 1.5rem;
+          border-radius: 16px;
+          text-align: center;
         }
-        .dash-view-all:hover { opacity: 0.8; }
         .group-card {
           display: flex;
           align-items: center;
