@@ -66,16 +66,14 @@ A fully interactive **floating 3D chatbot** built with pure CSS + animations:
 
 ## 📸 Preview
 
-## 📸 Preview
-
 ### 🖥️ Dashboard
-![Dashboard](./public/assets/dashboard.png)
+![Dashboard](./assets/dashboard.png)
 
 ### 📊 Insights Page
-![Insights](./public/assets/insight.png)
+![Insights](./assets/insight.png)
 
 ### 💳 Settlement Page
-![Settlement](./public/assets/settlement.png)
+![Settlement](./assets/settlement.png)
 
 ### 🤖 Chatbot Interaction
 ![Chatbot](./public/assets/chatbot.png)
