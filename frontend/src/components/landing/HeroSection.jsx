@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import splitCreditLogo from '../../assets/logo.png'
  
 /* ─────────────────────────────────────────────
@@ -202,6 +203,7 @@ function VaultVisual({ scrollY }) {
 export default function HeroSection() {
   const containerRef = useRef(null)
   const { scrollY } = useScroll()
+  const navigate = useNavigate()
  
   const heroY   = useTransform(scrollY, [0, 600], [0, -80])
   const heroOp  = useTransform(scrollY, [0, 500], [1, 0])
@@ -284,7 +286,7 @@ export default function HeroSection() {
               </svg>
               Sign in with Google
             </button>
-            <button className="cta-ghost">Live Demo →</button>
+            <button className="cta-ghost" onClick={() => navigate('/insights')}>Get Started →</button>
           </motion.div>
  
           {/* Stats */}

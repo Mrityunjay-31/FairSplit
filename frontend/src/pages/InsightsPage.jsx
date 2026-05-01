@@ -1,6 +1,7 @@
 import PageTransition from '../components/shared/PageTransition'
 import SpendingInsightsSection from '../components/features/SpendingInsightsSection'
 import BudgetGuardrailsSection from '../components/features/BudgetGuardrailsSection'
+import InsightsChatbot from '../components/chatbot/InsightsChatbot'
 
 export default function InsightsPage() {
   return (
@@ -17,6 +18,8 @@ export default function InsightsPage() {
           <BudgetGuardrailsSection />
         </div>
       </div>
+      
+      <InsightsChatbot />
 
       <style>{`
         .ins-title {

@@ -14,6 +14,7 @@ const CreateGroupPage  = lazy(() => import('./pages/CreateGroupPage'))
 const SettlementsPage  = lazy(() => import('./pages/SettlementsPage'))
 const ProfilePage     = lazy(() => import('./pages/ProfilePage'))
 const InsightsPage    = lazy(() => import('./pages/InsightsPage'))
+const ChatbotPage     = lazy(() => import('./pages/ChatbotPage'))
 
 /* ── Loading fallback ── */
 function PageLoader() {
@@ -62,6 +63,7 @@ export default function App() {
               <Route path="/settlements" element={<SettlementsPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/assistant" element={<ChatbotPage />} />
             </Route>
           </Routes>
         </Suspense>
